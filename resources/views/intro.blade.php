@@ -16,7 +16,7 @@
         <div class="row">
         @foreach ($weather as $w)
             <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-2">
-              <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}">
+              <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}"><br>
               {{ $w }}
             </a>
         @endforeach
@@ -28,7 +28,7 @@
         <div class="row">
         @foreach ($subject as $s)
             <a href="/dielo?motiv[]={{ $s }}" class="display-block col-3 subject-icon icon mb-2">
-              <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle">
+              <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle"><br>
               {{ $s }}
             </a>
         @endforeach
