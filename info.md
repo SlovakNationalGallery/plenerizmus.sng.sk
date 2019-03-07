@@ -1,0 +1,1 @@
+https://medium.com/@factoryhr/elasticsearch-introduction-implementation-and-example-17dd66c35c35

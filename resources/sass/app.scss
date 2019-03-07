@@ -1,0 +1,89 @@
+
+// Fonts
+@import "fonts";
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  background-color: $body-bg;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+
+h2 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+a.icon {
+  color: $body-color;
+  opacity: 1.0;
+
+  -webkit-transition: opacity .2s ease-in-out, color .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out, color .2s ease-in-out;
+  transition: opacity .2s ease-in-out, color .2s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: $body-color;
+    opacity: 0.5;
+  }
+  img {
+    max-width: 70px;
+  }
+}
+
+a.mood-icon {
+    display: inline-block;
+    position:relative;
+    // padding: .7em;
+    margin: 0 .5em .5em 0;
+    background: #D4CCBD;
+    color:$body-color;
+    text-decoration:none;
+    // font-weight: bold;
+}
+
+a.mood-icon:hover {
+    background:#BAB4A8;
+    color:$body-color;
+}
+
+a.mood-icon:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:1;
+
+    background: -moz-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
+    background: -o-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
+    background: -ms-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
+    background: -webkit-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
+}
+
+a.mood-icon:after {
+    content: '';
+    position:absolute;
+    top:.25em;
+    right:.25em;
+    bottom:.25em;
+    left:.25em;
+    border: 1px rgba(0,0,0,.3) dashed;
+    outline: 1px rgba(255,255,255,.5) dashed;
+}
