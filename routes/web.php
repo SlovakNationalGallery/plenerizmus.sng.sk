@@ -26,7 +26,7 @@ Route::get('/', function (Request $request) {
     $filter_tag = 'plenérizmus';
     $client = ClientBuilder::create()->build();
     $params = [
-        'index' => 'webumenia_plenerizmus_sk',
+        'index' => config('elasticsearch.index'),
         'type' => 'items',
         'body' => [
             'query' => [
@@ -104,7 +104,7 @@ Route::get('/dielo', function (Request $request) {
     $filter_tag = 'plenérizmus';
     $client = ClientBuilder::create()->build();
     $params = [
-        'index' => 'webumenia_plenerizmus_sk',
+        'index' => config('elasticsearch.index'),
         'type' => 'items',
         'body' => [
             'query' => [
@@ -173,7 +173,7 @@ Route::get('/{id}', function ($id) {
 
     $client = ClientBuilder::create()->build();
     $params = [
-        'index' => 'webumenia_plenerizmus_sk',
+        'index' => config('elasticsearch.index'),
         'type' => 'items',
         'id' => $id,
     ];
