@@ -11,8 +11,16 @@
 |
 */
 use Elasticsearch\ClientBuilder;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+
+    if ($request->has('pocasie')) {
+        dd($request->input('pocasie'));
+        if ($request->session()->has('pocasie')) {
+            //
+        }
+    }
 
     $limit = 10;
     $filter_tag = 'plenérizmus';
@@ -29,6 +37,7 @@ Route::get('/', function () {
         // 'body' => ['testField' => 'abc']
     ];
     $params['body']['size'] = $limit;
+    $params['body']['query']['bool']['filter']['and'][]['term']['has_iip'] = true;
     $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $filter_tag;
 
 
@@ -85,6 +94,67 @@ Route::get('/', function () {
     ]);
 
 
+
+
+});
+
+Route::get('/dielo', function (Request $request) {
+
+    $limit = 1;
+    $filter_tag = 'plenérizmus';
+    $client = ClientBuilder::create()->build();
+    $params = [
+        'index' => 'webumenia_plenerizmus_sk',
+        'type' => 'items',
+        'body' => [
+            'query' => [
+            ]
+        ]
+        // 'id' => 'SVK:SNG.O_4939',
+        // 'id' => 'my_id',
+        // 'body' => ['testField' => 'abc']
+    ];
+    $params['body']['size'] = $limit;
+    $params['body']['sort'][] = [
+        '_script' => [
+            'script' => 'Math.random() * 200000',
+            'type' => 'number',
+            'params' => [],
+            'order' => 'asc',
+        ]
+    ];
+
+
+    $params['body']['query']['bool']['filter']['and'][]['term']['has_iip'] = true;
+    $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $filter_tag;
+    if ($request->has('pocasie')) {
+        foreach ($request->input('pocasie') as $pocasie) {
+            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $pocasie;
+        }
+    }
+
+    // dd($params);
+
+    $response = $client->search($params);
+
+    if (empty($response['hits']['total'])) {
+        return 'nenaslo ziadne';
+    }
+
+    $item_id = $response['hits']['hits'][0]['_source']['id'];
+
+    $item = \App\Item::find($item_id);
+    $itemImages = $item->getZoomableImages();
+    $fullIIPImgURLs = $itemImages->map(function ($itemImage) {
+        return $itemImage->getFullIIPImgURL();
+    });
+    $index = 0;
+
+    return view('dielo', [
+        'item' => $item,
+        'index' => $index,
+        'fullIIPImgURLs' => $fullIIPImgURLs,
+    ]);
 
 
 });

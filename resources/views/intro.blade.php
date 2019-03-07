@@ -10,31 +10,31 @@
     </div>
 
     <div class="row my-5">
-      <div class="col-sm text-center">
+      <div class="col-sm text-center px-5">
         <h3 class="my-3">Počasie</h3>
 
         <div class="row">
         @foreach ($weather as $w)
-            <a href="#" class="display-block col-4 weather-icon icon mb-2">
+            <a href="?pocasie={{ $w }}" class="display-block col-4 weather-icon icon mb-2">
               <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}">
               {{ $w }}
             </a>
         @endforeach
         </div>
       </div>
-      <div class="col-sm text-center">
+      <div class="col-sm text-center px-5">
         <h3 class="my-3">Motív</h3>
 
         <div class="row">
         @foreach ($subject as $s)
-            <a href="#" class="display-block col-3 subject-icon icon mb-2">
+            <a href="?motiv={{ $s }}" class="display-block col-3 subject-icon icon mb-2">
               <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle">
               {{ $s }}
             </a>
         @endforeach
         </div>
       </div>
-      <div class="col-sm text-center">
+      <div class="col-sm text-center px-5">
         <h3 class="my-3">Nálada</h3>
 
         {{-- <div class="row"> --}}
@@ -51,13 +51,5 @@
     <div class="text-center">
       <button type="button" class="btn btn-dark btn-lg">Vyhľadaj →</button>
     </div>
-
-  </div>
-  {{-- <script type="text/javascript" src="{{ mix('/js/manifest.js') }}"></script> --}}
-  {{-- <script type="text/javascript" src="{{ mix('/js/vendor.js') }}"></script> --}}
-  <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
-
-</body>
-</html>
 
 @stop
