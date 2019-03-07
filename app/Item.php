@@ -4,9 +4,31 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Item extends Model
 {
+    use \Dimsav\Translatable\Translatable;
+
     public $incrementing = false;
+
+    public $translatedAttributes = [
+        'title',
+        'description',
+        'work_type',
+        'work_level',
+        'topic',
+        'subject',
+        'measurement',
+        'dating',
+        'medium',
+        'technique',
+        'inscription',
+        'place',
+        'state_edition',
+        'gallery',
+        'relationship_type',
+        'related_work'
+    ];
 
 
     // public function authorities()
@@ -160,5 +182,12 @@ class Item extends Model
     {
         return $this->hasMany(ItemImage::class)->orderBy('order');
     }
+
+    public function getTitleWithAuthors($html = false)
+    {
+        $dash = ($html) ? ' &ndash; ' : ' - ';
+        return implode(', ', $this->authors)  . $dash .  $this->title;
+    }
+
 
 }

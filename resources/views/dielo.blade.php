@@ -31,6 +31,17 @@
 
 
     </div>
+    <div class="bottom-panel">
+      <div class="row">
+        <div class="col-sm-3 p-2 text-left"></div>
+        <div class="col-sm p-2 text-center bg-overlay">
+          {{ $item->getTitleWithAuthors() }}<br>
+          {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }}
+        </div>
+        <div class="col-sm-3 p-2 text-right"></div>
+      </div>
+
+    </div>
 @stop
 
 @push('scripts')

@@ -1,6 +1,10 @@
 .zoomviewer {
   overflow: hidden;
 
+  .zoomviewer {
+    height: calc(100% - 50px);
+  }
+
   #viewer{
     height: 100%;
     min-height: 100%;
