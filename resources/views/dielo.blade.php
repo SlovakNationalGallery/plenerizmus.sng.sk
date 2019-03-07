@@ -33,14 +33,14 @@
     </div>
     <div class="bottom-panel">
       <div class="row">
-        <div class="col-sm-3 p-2 text-left">
-          <a href="/" class="btn btn-dark ml-4"><i class="fas fa-arrow-left"></i> Skús znova</a>
-        </div>
-        <div class="col-sm p-2 text-center bg-overlay">
+        <div class="col-12 col-sm-6 order-sm-2 p-2 text-center bg-overlay">
           {{ $item->getTitleWithAuthors() }}<br>
           {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }}
         </div>
-        <div class="col-sm-3 p-2 text-right">
+        <div class="col-6 col-sm-3 order-sm-1 p-2 text-left">
+          <a href="/" class="btn btn-dark ml-4"><i class="fas fa-arrow-left"></i> Skús znova</a>
+        </div>
+        <div class="col-6 col-sm-3 p-2 order-sm-3 text-right">
         <a href="{{ url()->full() }}" class="btn btn-dark mr-4">Iné dielo <i class="fas fa-redo-alt"></i></a>
         </div>
       </div>
