@@ -49,7 +49,7 @@
     </div>
 
     <div class="text-center">
-      <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button>
+      {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
     </div>
 
 @stop
