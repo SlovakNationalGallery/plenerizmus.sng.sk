@@ -132,6 +132,16 @@ Route::get('/dielo', function (Request $request) {
             $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $pocasie;
         }
     }
+    if ($request->has('motiv')) {
+        foreach ($request->input('motiv') as $motiv) {
+            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $motiv;
+        }
+    }
+    if ($request->has('nalada')) {
+        foreach ($request->input('nalada') as $nalada) {
+            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $nalada;
+        }
+    }
 
     // dd($params);
 

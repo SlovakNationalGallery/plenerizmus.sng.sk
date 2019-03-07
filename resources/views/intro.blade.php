@@ -15,7 +15,7 @@
 
         <div class="row">
         @foreach ($weather as $w)
-            <a href="?pocasie={{ $w }}" class="display-block col-4 weather-icon icon mb-2">
+            <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-2">
               <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}">
               {{ $w }}
             </a>
@@ -27,7 +27,7 @@
 
         <div class="row">
         @foreach ($subject as $s)
-            <a href="?motiv={{ $s }}" class="display-block col-3 subject-icon icon mb-2">
+            <a href="/dielo?motiv[]={{ $s }}" class="display-block col-3 subject-icon icon mb-2">
               <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle">
               {{ $s }}
             </a>
@@ -39,7 +39,7 @@
 
         {{-- <div class="row"> --}}
         @foreach ($mood as $m)
-            <a href="#" class="mood-icon icon mb-2 mx-2 py-2 px-4">
+            <a href="/dielo?nalada[]={{ $m }}" class="mood-icon icon mb-2 mx-2 py-2 px-4">
               {{ $m }}
             </a>
         @endforeach
@@ -49,7 +49,7 @@
     </div>
 
     <div class="text-center">
-      <button type="button" class="btn btn-dark btn-lg">Vyhľadaj →</button>
+      <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button>
     </div>
 
 @stop
