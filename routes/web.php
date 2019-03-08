@@ -125,22 +125,29 @@ Route::get('/dielo', function (Request $request) {
     ];
 
 
-    $params['body']['query']['bool']['filter']['and'][]['term']['has_iip'] = true;
-    $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $filter_tag;
+    $params['body']['query']['bool']['must'][]['term']['has_iip'] = true;
+    $params['body']['query']['bool']['must'][]['term']['tag'] = $filter_tag;
+
     if ($request->has('pocasie')) {
+        $weather = [];
         foreach ($request->input('pocasie') as $pocasie) {
-            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $pocasie;
+            $weather[]['term']['tag'] = $pocasie;
         }
+        $params['body']['query']['bool']['must'][]['bool']['should'] = $weather;
     }
     if ($request->has('motiv')) {
+        $subject = [];
         foreach ($request->input('motiv') as $motiv) {
-            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $motiv;
+            $subject[]['term']['tag'] = $motiv;
         }
+        $params['body']['query']['bool']['must'][]['bool']['should'] = $subject;
     }
     if ($request->has('nalada')) {
+        $mood = [];
         foreach ($request->input('nalada') as $nalada) {
-            $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $nalada;
+            $mood[]['term']['tag'] = $nalada;
         }
+        $params['body']['query']['bool']['must'][]['bool']['should'] = $mood;
     }
 
     // dd($params);
