@@ -228,4 +228,6 @@ return [
 
     ],
 
+    'ga_code' => env('GA_CODE'),
+
 ];
