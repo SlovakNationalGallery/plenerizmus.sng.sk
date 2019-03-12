@@ -4,6 +4,8 @@
 
 @section('content')
 
+  <div class="d-table h-100"><div class="d-table-cell align-middle">
+
     <div class="header text-center my-4">
       <h1>Čo chceš vidieť?</h1>
       <h2 class="text-uppercase">zvoľ vlastnosti a vyhľadaj svoje dielo</h2>
@@ -51,5 +53,7 @@
     <div class="text-center">
       {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
     </div>
+
+  </div></div>
 
 @stop
