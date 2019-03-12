@@ -15,6 +15,11 @@ use Illuminate\Http\Request;
 
 Route::get('/', function (Request $request) {
 
+    // check whether set app in kiosk mode - for timeouts and blocking outgoing links
+    if ($request->has('kiosk') && $request->input('kiosk')) {
+        $request->session()->put('kiosk', true);
+    }
+
     if ($request->has('pocasie')) {
         dd($request->input('pocasie'));
         if ($request->session()->has('pocasie')) {

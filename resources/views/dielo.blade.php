@@ -53,28 +53,30 @@
 <script type="text/javascript" src="{{ asset('js/openseadragon.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/components/zoomviewer.js') }}"></script>
 
-{{-- return user back to intro screen if idle  > 60 seconds --}}
-<script>
-(function() {
+@if (session('kiosk', false))
+  {{-- return user back to intro screen if idle  > 60 seconds --}}
+  <script>
+  (function() {
 
-    const idleDurationSecs = 60;
-    const redirectUrl = '/';
-    let idleTimeout;
+      const idleDurationSecs = 5;
+      const redirectUrl = '/';
+      let idleTimeout;
 
-    const resetIdleTimeout = function() {
-        if(idleTimeout) clearTimeout(idleTimeout);
-        idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
-    };
+      const resetIdleTimeout = function() {
+          if(idleTimeout) clearTimeout(idleTimeout);
+          idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+      };
 
-    // init on page load
-    resetIdleTimeout();
+      // init on page load
+      resetIdleTimeout();
 
-    // reset the idle timeout on any of the events listed below
-    ['click', 'touchstart', 'mousemove'].forEach(evt =>
-        document.addEventListener(evt, resetIdleTimeout, false)
-    );
+      // reset the idle timeout on any of the events listed below
+      ['click', 'touchstart', 'mousemove'].forEach(evt =>
+          document.addEventListener(evt, resetIdleTimeout, false)
+      );
 
-})();
-</script>
+  })();
+  </script>
+@endif
 
 @endpush
