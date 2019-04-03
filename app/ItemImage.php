@@ -14,6 +14,8 @@ class ItemImage extends Model
     const IIP_FULL_URL_PREFIX = '/fcgi-bin/iipsrv.fcgi?DeepZoom=';
     const IIP_FULL_URL_SUFFIX = '.dzi';
 
+    protected $connection = 'mysql_webumenia';
+
     protected $fillable = [
         'title',
         'iipimg_url',

@@ -9,6 +9,7 @@ class Item extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
+    protected $connection = 'mysql_webumenia';
     public $incrementing = false;
 
     public $translatedAttributes = [
