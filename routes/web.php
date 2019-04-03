@@ -172,6 +172,11 @@ Route::get('/dielo', function (Request $request) {
     });
     $index = 0;
 
+    $item_visit = new \App\ItemVisit;
+    $item_visit->item_id = $item->id;
+    $item_visit->viewed_at = now();
+    $item_visit->save();
+
     return view('dielo', [
         'item' => $item,
         'index' => $index,
