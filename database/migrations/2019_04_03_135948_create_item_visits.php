@@ -16,7 +16,7 @@ class CreateItemVisits extends Migration
         Schema::create('item_visits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('item_id')->default('');
-            $table->dateTime('viewed_at')->useCurrent();
+            $table->dateTime('viewed_at')->nullable();
         });
     }
 
