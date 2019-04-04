@@ -51,8 +51,8 @@ return [
 
         // Code and composer vendors are ready but nothing is built.
         'build' => [
-            'npm:install',
-            'npm:production',
+            'yarn:install',
+            'yarn:production',
         ],
 
         // Deployment is done but not live yet (before symlink)
@@ -94,7 +94,10 @@ return [
     'options' => [
         'application' => env('APP_NAME', 'Laravel'),
         'repository' => 'git@github.com:SlovakNationalGallery/plenerizmus.sng.sk.git',
+        'shared_dirs' => ['storage', 'resources/fonts'],
         'bin/php' => '/usr/bin/php7.2',
+        'http_user' => 'www-data',
+        'writable_use_sudo' => false
     ],
 
     /*
