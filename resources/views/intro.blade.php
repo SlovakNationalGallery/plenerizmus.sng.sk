@@ -13,7 +13,7 @@
 
     <div class="row my-5">
       <div class="col-sm text-center px-5">
-        <h3 class="my-3">Počasie</h3>
+        <h3 class="my-3">1. Počasie</h3>
 
         <div class="row">
         @foreach ($weather as $w)
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="col-sm text-center px-5">
-        <h3 class="my-3">Motív</h3>
+        <h3 class="my-3">2. Motív</h3>
 
         <div class="row">
         @foreach ($subject as $s)
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="col-sm text-center px-5">
-        <h3 class="my-3">Nálada</h3>
+        <h3 class="my-3">3. Nálada</h3>
 
         {{-- <div class="row"> --}}
         @foreach ($mood as $m)
@@ -53,6 +53,8 @@
     <div class="text-center">
       {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
     </div>
+
+    <citation></citation>
 
   </div></div>
 
