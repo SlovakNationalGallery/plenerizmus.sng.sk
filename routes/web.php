@@ -174,6 +174,8 @@ Route::get('/dielo', function (Request $request) {
 
     $item_visit = new \App\ItemVisit;
     $item_visit->item_id = $item->id;
+    $item_visit->ip = $request->ip();
+    $item_visit->is_kiosk = $request->session()->get('kiosk', 0);
     $item_visit->viewed_at = now();
     $item_visit->save();
 
