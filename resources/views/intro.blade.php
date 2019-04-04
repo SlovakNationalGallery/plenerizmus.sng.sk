@@ -6,9 +6,25 @@
 
   <div class="d-table h-100"><div class="d-table-cell align-middle">
 
-    <div class="header text-center my-4">
-      <h1>Čo chceš vidieť?</h1>
-      <h2 class="text-uppercase">zvoľ vlastnosti a vyhľadaj svoje dielo</h2>
+    <div class="row">
+
+      <div class="col-md-6 order-md-2 header text-center my-4">
+        <h1>Nájdi svoje obľúbené dielo</h1>
+        <h2 class="">navoľ si vlastnosti diela podľa svojej aktuálnej nálady</h2>
+      </div>
+
+      <div class="col-md-3 order-md-1 my-md-4 px-4">
+        <p class="text-center small">
+          V druhej polovici 19. storočia objavili umelci a umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.
+        </p>
+      </div>
+
+      <div class="col-md-3 order-md-3 my-md-4 px-4">
+        <p class="text-center small">
+          Vyber si z pestrej škály motívov, nálad a počasia a preskúmaj výslednú maľbu alebo kresbu naozaj zblízka.
+        </p>
+      </div>
+
     </div>
 
     <div class="row my-5">
