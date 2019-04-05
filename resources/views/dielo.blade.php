@@ -15,8 +15,8 @@
       <div id="viewer"></div>
 
       <div id="toolbarDiv" class="autohide">
-        <a id="zoom-in" href="#zoom-in" title="zoom in"><i class="fas fa-search-plus"></i></a>
-        <a id="zoom-out" href="#zoom-out" title="zoom out"><i class="fas fa-search-minus"></i></a>
+        {{-- <a id="zoom-in" href="#zoom-in" title="zoom in"><i class="fas fa-search-plus"></i></a> --}}
+        {{-- <a id="zoom-out" href="#zoom-out" title="zoom out"><i class="fas fa-search-minus"></i></a> --}}
         {{-- <a id="home" href="#home" title="zoom to fit"><i class="fa fa-home"></i></a> --}}
         {{-- <a id="full-page" href="#full-page" title="zobraz fullscreen"><i class="fa fa-expand"></i></a> --}}
         @if (count($fullIIPImgURLs) > 1)
@@ -34,15 +34,19 @@
 
     <div class="bottom-panel bg-overlay">
       <div class="row">
-        <div class="col-12 col-sm-6 order-sm-2 p-2 text-center align-self-center">
+        <div class="col-12 col-sm-6 col-md-4 order-sm-2 p-2 text-center align-self-center">
           <em>{{ $item->getTitleWithAuthors() }} ({{ $item->dating }})</em>
           {{-- {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }} --}}
         </div>
-        <div class="col-6 col-sm-3 order-sm-1 p-2 text-left">
+        <div class="col-6 col-sm-3 col-md-4 order-sm-1 p-2 text-left">
           <a href="/" class="btn btn-link btn-lg ml-4" class=""><img src="images/icons/arrow.svg" alt="" class="pr-2"><span class="d-none d-md-inline">Naspäť</span></a>
         </div>
-        <div class="col-6 col-sm-3 p-2 order-sm-3 text-right">
-        <a href="{{ url()->full() }}" class="btn btn-link btn-lg mr-4"><span class="d-none d-md-inline">Ďalšie</span><img src="images/icons/reload.svg" alt="" class="pl-2"></a>
+        <div class="col-md-2 p-2 order-md-3 text-center d-none d-md-block text-nowrap">
+          <a id="zoom-in" href="#zoom-in" class="btn btn-link btn-lg px-1 px-lg-2"><img src="images/icons/plus.svg" alt="plus"></a>
+          <a id="zoom-out" href="#zoom-out" class="btn btn-link btn-lg px-1 px-lg-2"><img src="images/icons/minus.svg" alt="minus"></a>
+        </div>
+        <div class="col-6 col-sm-3 col-md-2 p-2 order-sm-4 text-right">
+          <a href="{{ url()->full() }}" class="btn btn-link btn-lg mr-4"><span class="d-none d-md-inline">Ďalšie</span><img src="images/icons/reload.svg" alt="" class="pl-2"></a>
         </div>
       </div>
 
