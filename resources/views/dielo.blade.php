@@ -39,7 +39,7 @@
           {{-- {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }} --}}
         </div>
         <div class="col-6 col-sm-3 col-md-4 order-sm-1 p-2 text-left">
-          <a href="/" class="btn btn-link btn-lg ml-4" class=""><img src="images/icons/arrow.svg" alt="" class="pr-2"><span class="d-none d-md-inline">Naspäť</span></a>
+          <a href="/" class="btn btn-link btn-lg ml-4" class=""><img src="images/icons/arrow.svg" alt="arrow" class="pr-2" style="margin-top: -0.3rem;"><span class="d-none d-md-inline">Naspäť</span></a>
         </div>
         <div class="col-md-2 p-2 order-md-3 text-center d-none d-md-block text-nowrap">
           <a id="zoom-in" href="#zoom-in" class="btn btn-link btn-lg px-1 px-lg-2"><img src="images/icons/plus.svg" alt="plus"></a>
