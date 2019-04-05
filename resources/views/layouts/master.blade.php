@@ -49,7 +49,7 @@
   @endif
 
 </head>
-<body>
+<body class="@yield('body-class', '')">
   <div class="container-fluid py-4 h-100 px-lg-4 px-xxl-5" id="app">
     @yield('content')
   </div>

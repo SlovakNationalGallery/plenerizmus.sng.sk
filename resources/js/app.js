@@ -31,3 +31,8 @@ Vue.component('citation', require('./components/Citation.vue').default);
 const app = new Vue({
     el: '#app'
 });
+
+
+$(function () {
+    $('body').removeClass('fade-out');
+});

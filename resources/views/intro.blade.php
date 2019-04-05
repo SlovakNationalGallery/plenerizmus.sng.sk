@@ -2,6 +2,8 @@
 
 @section('title', trans('intro.title'))
 
+@section('body-class', 'fade-out')
+
 @section('content')
 
   <div class="d-table h-100"><div class="d-table-cell align-middle">
