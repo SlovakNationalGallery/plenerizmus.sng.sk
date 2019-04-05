@@ -52,7 +52,6 @@ $("document").ready(function() {
 
     var OSDOptions = {
       id: "viewer",
-      prefixUrl: "/images/openseadragon/",
       toolbar:        "toolbarDiv",
       zoomInButton:   "zoom-in",
       zoomOutButton:  "zoom-out",
@@ -61,10 +60,14 @@ $("document").ready(function() {
       nextButton:     "next",
       previousButton: "previous",
       showNavigator:  false,
-      visibilityRatio: 1,
-      minZoomLevel: 0,
-      defaultZoomLevel: 0,
+      // constrainDuringPan: true,
+      visibilityRatio: 0.5,
+      // minZoomLevel: null,
+      defaultZoomLevel: 2.0,
+      minZoomImageRatio: 0.1,
+      // defaultZoomLevel: 1,
       autoResize: false,
+      animationTime: 1.5,
       tileSources: tileSources
     }
 
@@ -164,6 +167,19 @@ $("document").ready(function() {
     viewer.addHandler('tile-drawn', function () {
       isLoaded = true;
     });
+
+    viewer.addHandler('open', function() {
+        // var box1 = new OpenSeadragon.Rect(0.12, 0.05, 0.06, 0.02);
+        // viewer.viewport.fitBounds(box1);
+      viewer.viewport.zoomSpring.animationTime = "2.5";
+      setTimeout(function () {
+
+        viewer.viewport.zoomTo(0.8);
+        viewer.viewport.applyConstraints();
+        viewer.viewport.zoomSpring.animationTime = "1.5";
+      }, 500);
+    });
+
 
     $( window ).resize(function() {
       shortenCopyright();

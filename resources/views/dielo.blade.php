@@ -55,7 +55,7 @@
 
 @push('scripts')
 
-<script type="text/javascript" src="{{ asset('js/openseadragon.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/openseadragon.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/components/zoomviewer.js') }}"></script>
 
 @if (session('kiosk', false))
