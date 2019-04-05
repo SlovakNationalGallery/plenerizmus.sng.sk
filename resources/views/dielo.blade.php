@@ -69,7 +69,11 @@
 
       const resetIdleTimeout = function() {
           if(idleTimeout) clearTimeout(idleTimeout);
-          idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+          idleTimeout = setTimeout(
+            function(){
+              $("#viewer .openseadragon-container").fadeOut("slow", "swing", function(){ location.href = redirectUrl });
+            },
+            idleDurationSecs * 1000);
       };
 
       // init on page load
