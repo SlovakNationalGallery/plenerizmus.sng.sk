@@ -63,7 +63,7 @@
   <script>
   (function() {
 
-      const idleDurationSecs = 5;
+      const idleDurationSecs = 30;
       const redirectUrl = '/';
       let idleTimeout;
 
