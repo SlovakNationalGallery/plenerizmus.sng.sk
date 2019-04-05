@@ -132,8 +132,9 @@ a.btn-link {
 
   &:hover {
     text-decoration: none;
-    // color: darken($zoom-color, 0.5);
-    color: #fff;
+    // color: #fff;
+    color: $zoom-color;
+    opacity: 0.8;
   }
 
   img {
