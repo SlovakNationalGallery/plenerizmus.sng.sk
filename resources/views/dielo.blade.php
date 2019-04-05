@@ -31,17 +31,18 @@
 
 
     </div>
-    <div class="bottom-panel">
+
+    <div class="bottom-panel bg-overlay">
       <div class="row">
-        <div class="col-12 col-sm-6 order-sm-2 p-2 text-center bg-overlay">
-          {{ $item->getTitleWithAuthors() }}<br>
-          {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }}
+        <div class="col-12 col-sm-6 order-sm-2 p-2 text-center align-self-center">
+          <em>{{ $item->getTitleWithAuthors() }} ({{ $item->dating }})</em>
+          {{-- {{ $item->dating }}, {{ implode(', ', $item->techniques) }}, {{ implode(', ', $item->mediums) }}, {{ $item->gallery }} --}}
         </div>
         <div class="col-6 col-sm-3 order-sm-1 p-2 text-left">
-          <a href="/" class="btn btn-dark ml-4"><i class="fas fa-arrow-left"></i> Skús znova</a>
+          <a href="/" class="btn btn-link btn-lg ml-4" class=""><img src="images/icons/arrow.svg" alt="" class="pr-2"><span class="d-none d-md-inline">Naspäť</span></a>
         </div>
         <div class="col-6 col-sm-3 p-2 order-sm-3 text-right">
-        <a href="{{ url()->full() }}" class="btn btn-dark mr-4">Iné dielo <i class="fas fa-redo-alt"></i></a>
+        <a href="{{ url()->full() }}" class="btn btn-link btn-lg mr-4"><span class="d-none d-md-inline">Ďalšie</span><img src="images/icons/reload.svg" alt="" class="pl-2"></a>
         </div>
       </div>
 

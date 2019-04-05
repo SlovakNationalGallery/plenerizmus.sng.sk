@@ -71,22 +71,6 @@ a.icon {
   }
 }
 
-.bottom-panel {
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  // min-height: 100px;
-  font-size: 0.9rem;
-  overflow: hidden;
-
-  .bg-overlay {
-    background-color: rgba( $body-bg, .7 );
-  }
-
-}
-
 .keep-height {
     min-height: 230px;
 }
