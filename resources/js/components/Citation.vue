@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 keep-height">
-                <transition name="fade" mode="out-in">
-                    <blockquote v-on:click="randomCitation" v-if="show" >
-                        <p>{{ selectedCitation.message }}</p>
+            <div class="col-md-8">
+                <transition name="fade">
+                    <blockquote v-on:click="randomCitation" v-if="show">
+                        <p class="small">{{ selectedCitation.message }}</p>
 
-                        <footer>{{ selectedCitation.author }}</footer>
+                        <footer class="small">{{ selectedCitation.author }}</footer>
 
                     </blockquote>
                 </transition>
@@ -78,11 +78,7 @@ import { timeout } from 'q';
         margin: 0;
         padding: 0;
         position: relative;
-        /* width: 60%; */
-        /* min-width: 400px; */
-        /* max-width: 820px; */
-        /* font-size: 1.25vw; */
-        line-height: 1.4;
+        font-style: italic;
         text-rendering: optimizeLegibility;
         font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
@@ -90,22 +86,23 @@ import { timeout } from 'q';
     }
 
     blockquote p:first-of-type:before {
-        content: '\201c';
+        content: '„';
         position: absolute;
         left: -.5em;
     }
 
     blockquote p:last-of-type:after {
-        content: '\201d';
+        content: '“';
         position: absolute;
     }
 
     blockquote footer {
         position: relative;
+        font-style: normal;
     }
 
     blockquote footer:before {
-        content: '– ';
+        content: '–';
         position: absolute;
         left: -.6em;
     }
@@ -137,16 +134,6 @@ import { timeout } from 'q';
     }
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
       opacity: 0;
-    }
-
-    .keep-height {
-        min-height: 280px;
-    }
-
-    @media all and (min-width: 600px) {
-        .keep-height {
-            min-height: 130px;
-        }
     }
 
 </style>

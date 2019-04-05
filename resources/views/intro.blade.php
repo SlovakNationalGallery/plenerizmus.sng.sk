@@ -10,67 +10,74 @@
 
       <div class="col-md-6 order-md-2 header text-center my-4">
         <h1>Nájdi svoje obľúbené dielo</h1>
-        <h2 class="">navoľ si vlastnosti diela podľa svojej aktuálnej nálady</h2>
+        <h2 class="py-1">navoľ si vlastnosti diela podľa svojej aktuálnej nálady</h2>
       </div>
 
       <div class="col-md-3 order-md-1 my-md-4 px-4">
         <p class="text-center small">
-          V druhej polovici 19. storočia objavili umelci a umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.
+          V druhej polovici 19. storočia objavili umelci a&nbsp;umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.
         </p>
       </div>
 
       <div class="col-md-3 order-md-3 my-md-4 px-4">
         <p class="text-center small">
-          Vyber si z pestrej škály motívov, nálad a počasia a preskúmaj výslednú maľbu alebo kresbu naozaj zblízka.
+          Vyber si z pestrej škály motívov, nálad a&nbsp;počasia a&nbsp;preskúmaj výslednú maľbu alebo kresbu naozaj zblízka.
         </p>
       </div>
 
     </div>
 
-    <div class="row my-5">
-      <div class="col-sm text-center px-5">
-        <h3 class="my-3">1. Počasie</h3>
+    <div class="row">
 
-        <div class="row">
-        @foreach ($weather as $w)
-            <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-2">
-              <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}"><br>
-              {{ $w }}
-            </a>
-        @endforeach
-        </div>
-      </div>
-      <div class="col-sm text-center px-5">
-        <h3 class="my-3">2. Motív</h3>
+      <div class="col-md-5 text-center px-5">
+        <h3 class="my-2 my-md-4 my-xxl-5"><em>1.</em> Motív</h3>
 
         <div class="row">
         @foreach ($subject as $s)
-            <a href="/dielo?motiv[]={{ $s }}" class="display-block col-3 subject-icon icon mb-2">
-              <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle"><br>
+            <a href="/dielo?motiv[]={{ $s }}" class="display-block col-2dot4 subject-icon icon mb-4 text-center">
+              <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle mb-2"><br>
               {{ $s }}
             </a>
         @endforeach
         </div>
       </div>
-      <div class="col-sm text-center px-5">
-        <h3 class="my-3">3. Nálada</h3>
 
-        {{-- <div class="row"> --}}
+      <div class="col-md-4 text-center px-5">
+        <h3 class="my-2 my-md-4 my-xxl-5"><em>2.</em> Nálada</h3>
+        <div class="row">
         @foreach ($mood as $m)
-            <a href="/dielo?nalada[]={{ $m }}" class="mood-icon icon mb-2 mx-2 py-2 px-4">
+            <a href="/dielo?nalada[]={{ $m }}" class="display-block col-3 icon mb-4 text-center">
+              {{-- <span class="{{ str_slug($m) }} rounded-circle mb-2"></span><br> --}}
+              <img src="/images/nalady/{{ str_slug($m) }}.svg" alt="{{ $m }}" class="rounded-circle mb-2"><br>
               {{ $m }}
             </a>
         @endforeach
-        {{-- </div> --}}
-
+        </div>
       </div>
+
+      <div class="col-md-3 text-center px-5">
+        <h3 class="my-2 my-md-4 my-xxl-5"><em>3.</em> Počasie</h3>
+
+        <div class="row">
+        @foreach ($weather as $w)
+            <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-4 text-center">
+              <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}" class="rounded-circle mb-2"><br>
+              {{ $w }}
+            </a>
+        @endforeach
+        </div>
+      </div>
+
     </div>
 
-    <div class="text-center">
+    {{-- <div class="text-center"> --}}
       {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
+    {{-- </div> --}}
+
+    <div class="my-2 my-md-4 keep-height d-block">
+      <citation class=""></citation>
     </div>
 
-    <citation></citation>
 
   </div></div>
 

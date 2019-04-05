@@ -50,7 +50,7 @@
 
 </head>
 <body>
-  <div class="container-fluid py-4 h-100" id="app">
+  <div class="container-fluid py-4 h-100 px-lg-4 px-xxl-5" id="app">
     @yield('content')
   </div>
   {{-- <script type="text/javascript" src="{{ mix('/js/manifest.js') }}"></script> --}}

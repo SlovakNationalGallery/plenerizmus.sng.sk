@@ -66,7 +66,7 @@ return [
 
         // Deployment is done and live
         'done' => [
-            //
+            'fpm:reload',
         ],
 
         // Deployment succeeded.
@@ -96,6 +96,7 @@ return [
         'repository' => 'git@github.com:SlovakNationalGallery/plenerizmus.sng.sk.git',
         'shared_dirs' => ['storage', 'resources/fonts'],
         'bin/php' => '/usr/bin/php7.2',
+        'php_fpm_service' => 'php7.2-fpm',
         'http_user' => 'www-data',
         'writable_use_sudo' => false
     ],

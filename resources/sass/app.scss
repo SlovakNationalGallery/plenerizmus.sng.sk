@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// 5-column layout with Bootstrap 4
+@import '5columns';
+
 // Zoom
 @import 'zoom';
 
@@ -36,6 +39,10 @@ h3 {
   font-size: 1.5rem;
 }
 
+.display-block {
+  display: block !important;
+}
+
 a.icon {
   color: $body-color;
   opacity: 1.0;
@@ -44,56 +51,24 @@ a.icon {
   -moz-transition: opacity .2s ease-in-out, color .2s ease-in-out;
   transition: opacity .2s ease-in-out, color .2s ease-in-out;
 
+  font-size: 0.9rem;
+
   &:hover {
     text-decoration: none;
     color: $body-color;
     opacity: 0.5;
   }
-  img {
-    max-width: 70px;
+  img, span.rounded-circle {
+    max-width: 90px;
+    width: 100%;
+    height: auto;
   }
 }
 
-a.mood-icon {
-    display: inline-block;
-    position:relative;
-    // padding: .7em;
-    margin: 0 .5em .5em 0;
-    background: #D4CCBD;
-    color:$body-color;
-    text-decoration:none;
-    // font-weight: bold;
-}
-
-a.mood-icon:hover {
-    background:#BAB4A8;
-    color:$body-color;
-}
-
-a.mood-icon:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index:1;
-
-    background: -moz-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
-    background: -o-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
-    background: -ms-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
-    background: -webkit-radial-gradient(.6em .6em, circle, $body-bg .55em, rgba(255,255,255,0) .6em) -.6em -.6em;
-}
-
-a.mood-icon:after {
-    content: '';
-    position:absolute;
-    top:.25em;
-    right:.25em;
-    bottom:.25em;
-    left:.25em;
-    border: 1px rgba(0,0,0,.3) dashed;
-    outline: 1px rgba(255,255,255,.5) dashed;
+@include media-breakpoint-up(xxl) {
+  a.icon {
+    font-size: 1.0rem;
+  }
 }
 
 .bottom-panel {
@@ -110,4 +85,20 @@ a.mood-icon:after {
     background-color: rgba( $body-bg, .7 );
   }
 
+}
+
+.keep-height {
+    min-height: 230px;
+}
+
+@media all and (min-width: 600px) {
+    .keep-height {
+        min-height: 100px;
+    }
+}
+
+@media all and (min-width: 1800px) {
+    .keep-height {
+        min-height: 80px;
+    }
 }

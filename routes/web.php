@@ -70,7 +70,7 @@ Route::get('/', function (Request $request) {
         'práca',
         'stavba',
         'stromy',
-        'studňa',
+        // 'studňa',
         'tieň',
         'vidiek',
         'voda',
@@ -78,17 +78,17 @@ Route::get('/', function (Request $request) {
     ];
 
     $mood = [
+        'sviežosť',
         'idyla',
         'mäkkosť',
-        'majestát',
+        'zvuk',
         'malebnosť',
+        'majestát',
+        'zamyslenie',
+        'ticho',
         'pochmúrnosť',
         'samota',
-        'sviežosť',
-        'ticho',
         'tvrdosť',
-        'zamyslenie',
-        'zvuk',
     ];
 
 
