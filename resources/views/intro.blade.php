@@ -76,7 +76,7 @@
       {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
     {{-- </div> --}}
 
-    <div class="my-2 my-md-4 keep-height d-block">
+    <div class="mt-2 mt-md-4 mt-lg-5 keep-height d-block">
       <citation class=""></citation>
     </div>
 

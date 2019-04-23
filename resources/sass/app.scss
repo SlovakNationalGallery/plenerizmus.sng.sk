@@ -72,6 +72,12 @@ a.icon {
     max-width: 90px;
     width: 100%;
     height: auto;
+    box-shadow: 0px 0px 18px 22px rgba(255, 255, 255, 0.0);
+  }
+  &.active {
+    img {
+      box-shadow: 0px 0px 18px 22px rgba(255, 255, 255, 0.75);
+    }
   }
 }
 
@@ -87,12 +93,12 @@ a.icon {
 
 @media all and (min-width: 600px) {
     .keep-height {
-        min-height: 110px;
+        min-height: 120px;
     }
 }
 
 @media all and (min-width: 1800px) {
     .keep-height {
-        min-height: 90px;
+        min-height: 100px;
     }
 }

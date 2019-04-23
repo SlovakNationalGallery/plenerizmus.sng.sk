@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 col-lg-6">
                 <transition name="fade">
                     <blockquote v-on:click="randomCitation" v-if="show">
                         <p class="small">{{ selectedCitation.message }}</p>
@@ -50,12 +50,13 @@ import { timeout } from 'q';
                     { message: 'Toužím malovat stromy, skály, výhledy a nad nimi krásné oblaky, zkrátka celou tu velkolepost lesa.', author: 'Soběslav Hippolyt Pinkas'},
                     { message: 'Přírodu není třeba ani zkrášlovat, ani zesilovat. Má těchto vlastností sama dost. Važte si studia v přírodě. Kdybyste byli odsouzeni celý život ztráviti pouze na tomto kousku země, je možno z tohoto místa pokořit celý svět – uměním. Vše záleží jen na vás', author: 'Julius Mařák'}
                 ],
-                selectedCitation: { message: '', author: ''}
+                selectedCitation: { message: '', author: ''},
+                timer: ''
             };
         },
 
         methods : {
-            async randomCitation() {
+            randomCitation: function() {
                 this.show = false;
                 const idx = Math.floor(Math.random() * this.citations.length);
                 this.selectedCitation = this.citations[idx];
@@ -67,7 +68,12 @@ import { timeout } from 'q';
         },
 
         mounted() {
-            this.randomCitation()
+            this.randomCitation();
+            this.timer = setInterval(this.randomCitation, 10000);
+        },
+
+        beforeDestroy() {
+          clearInterval(this.timer);
         }
     }
 </script>
@@ -83,6 +89,7 @@ import { timeout } from 'q';
         font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
         -moz-osx-fon-smoothing: grayscale;
+        cursor: pointer;
     }
 
     blockquote p:first-of-type:before {
