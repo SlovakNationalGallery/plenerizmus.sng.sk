@@ -190,5 +190,17 @@ class Item extends Model
         return implode(', ', $this->authors)  . $dash .  $this->title;
     }
 
+    public function getUrl($full = true, $params = [])
+    {
+        $url = 'www.webumenia.sk/dielo/' . $this->id;
+        if ($params) {
+            $url .= '?' . http_build_query($params);
+        }
+        if ($full) {
+            $url = 'https://' . $url;
+        }
+        return $url;
+    }
+
 
 }

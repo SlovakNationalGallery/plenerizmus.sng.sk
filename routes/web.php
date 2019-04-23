@@ -179,10 +179,19 @@ Route::get('/dielo', function (Request $request) {
     $item_visit->viewed_at = now();
     $item_visit->save();
 
+    $params = [
+        'index' => config('elasticsearch.index'),
+        'type' => 'items'
+    ];
+    $response = $client->search($params);
+
+    $items_count = (!empty($response['hits']['total'])) ? $response['hits']['total'] : 0;
+
     return view('dielo', [
         'item' => $item,
         'index' => $index,
         'fullIIPImgURLs' => $fullIIPImgURLs,
+        'items_count' => $items_count,
     ]);
 
 
@@ -207,7 +216,8 @@ Route::get('/{id}', function ($id) {
     }
 
     $item = $response['_source'];
-    dd($item);
+
+    dd($response);
 
 
 

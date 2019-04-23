@@ -32,6 +32,10 @@
 
     </div>
 
+    <div class="top-right">
+      <a href="#" class="mr-4" data-toggle="modal" data-target="#infoModal"><em>info</em></a>
+    </div>
+
     <div class="bottom-panel bg-overlay">
       <div class="row">
         <div class="col-12 col-sm-6 col-md-4 order-sm-2 p-2 text-center align-self-center">
@@ -50,6 +54,41 @@
         </div>
       </div>
 
+    </div>
+
+    {{-- Modal --}}
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <em class="mt-2">{{ implode(', ', $item->authors) }}</em>
+            <h3>{{ $item->title }}</h3>
+            <p class="my-2">
+              {{ $item->dating }},
+              {{ $item->technique }},
+              {{ $item->medium }},<br>
+              {{ $item->gallery }}
+              @if (session('kiosk', false))
+                {{ $item->getUrl(false) }}
+              @else
+                <a href="{{ $item->getUrl() }}" class="link-underline" target="_blank">{{ $item->getUrl(false) }}</a>
+              @endif
+            </p>
+
+            {!! QrCode::size(200)->backgroundColor(234,225,208)->margin(0)->generate($item->getUrl()); !!}
+
+            <p class="mt-2">
+              toto a ďaľších {{ number_format($items_count, 0, ',', ' ') }} výtvarných diel<br>
+              nájdete na
+              @if (session('kiosk', false))
+                webumenia.sk
+              @else
+                <a href="https://www.webumenia.sk/kolekcia/173" target="_blank">webumenia.sk</a>
+              @endif
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 @stop
 
@@ -84,7 +123,20 @@
           document.addEventListener(evt, resetIdleTimeout, false)
       );
 
+      /* disable external links */
+      $('a').filter(function() {
+         return this.hostname && this.hostname !== location.hostname;
+      }).addClass("external");
+
+      $('a').click(function(e) {
+          if($(this).hasClass('external')) {
+              e.preventDefault();
+          }
+      });
+
   })();
+
+
   </script>
 @endif
 
