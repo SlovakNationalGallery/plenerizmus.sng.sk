@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
+            <div class="col-md-8 col-xxl-6">
                 <transition name="fade">
                     <blockquote v-on:click="randomCitation" v-if="show">
                         <p class="small">{{ selectedCitation.message }}</p>
