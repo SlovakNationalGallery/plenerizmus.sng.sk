@@ -6,8 +6,8 @@
 
 @section('content')
 
-  <div class="d-table h-100"><div class="d-table-cell align-middle">
-
+  <form action="/dielo" method="GET">
+  <div class="d-table h-100" id="intro"><div class="d-table-cell align-middle">
     <div class="row">
 
       <div class="col-md-6 order-md-2 header text-center my-4">
@@ -29,6 +29,7 @@
 
     </div>
 
+
     <div class="row">
 
       <div class="col-md-5 text-center px-5">
@@ -39,6 +40,7 @@
             <a href="/dielo?motiv[]={{ $s }}" class="display-block col-2dot4 subject-icon icon mb-4 text-center">
               <img src="/images/motivy/motiv-{{ str_slug($s) }}.jpg" alt="{{ $s }}" class="rounded-circle mb-2"><br>
               {{ $s }}
+              <input type="checkbox" name="motiv[]" value="{{ $s }}" />
             </a>
         @endforeach
         </div>
@@ -52,6 +54,7 @@
               {{-- <span class="{{ str_slug($m) }} rounded-circle mb-2"></span><br> --}}
               <img src="/images/nalady/{{ str_slug($m) }}.svg" alt="{{ $m }}" class="rounded-circle mb-2"><br>
               {{ $m }}
+              <input type="checkbox" name="nalada[]" value="{{ $m }}" />
             </a>
         @endforeach
         </div>
@@ -65,9 +68,12 @@
             <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-4 text-center">
               <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}" class="rounded-circle mb-2"><br>
               {{ $w }}
+              <input type="checkbox" name="pocasie[]" value="{{ $w }}" />
             </a>
         @endforeach
         </div>
+
+
       </div>
 
     </div>
@@ -76,11 +82,44 @@
       {{-- <button type="button" class="btn btn-dark btn-lg">Vyhľadaj <i class="fas fa-arrow-right"></i></button> --}}
     {{-- </div> --}}
 
-    <div class="mt-2 mt-md-4 mt-lg-5 keep-height d-block">
-      <citation class=""></citation>
+    <div class="mt-2 mt-md-4 mt-xxl-5 keep-height d-block">
+        <div class="row">
+            <div class="col-md-3 col-xxl-3"></div>
+            <div class="col-md-6 col-xxl-6">
+                <citation class=""></citation>
+            </div>
+            <div class="col-md-3 col-xxl-3 text-right">
+                <button type="submit" class="btn btn-light btn-lg mr-4"><span class="d-none d-md-inline">Vyhľadaj</span><img src="images/icons/arrow-right.svg" alt="arrow" class="pl-2"></button>
+            </div>
+        </div>
     </div>
 
 
   </div></div>
-
+  </form>
 @stop
+
+@push('scripts')
+
+  <script>
+  (function() {
+    $(".icon").each(function () {
+      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+        $(this).addClass('active');
+      }
+      else {
+        $(this).removeClass('active');
+      }
+    });
+
+    $(".icon").on("click", function (e) {
+      $(this).toggleClass('active');
+      var $checkbox = $(this).find('input[type="checkbox"]');
+      $checkbox.prop("checked",!$checkbox.prop("checked"))
+
+      e.preventDefault();
+    });
+  })();
+  </script>
+
+@endpush

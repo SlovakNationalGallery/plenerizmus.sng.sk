@@ -61,22 +61,31 @@ a.icon {
   -moz-transition: opacity .2s ease-in-out, color .2s ease-in-out;
   transition: opacity .2s ease-in-out, color .2s ease-in-out;
 
+  img {
+    -webkit-transition: box-shadow .2s ease-in-out;
+    -moz-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+  }
+
   font-size: 0.9rem;
 
   &:hover {
     text-decoration: none;
     color: $body-color;
-    opacity: 0.5;
+    opacity: 0.8;
+    img {
+      box-shadow: 0px 0px 0 10px rgba(255, 255, 255, 0.4);
+    }
   }
   img, span.rounded-circle {
     max-width: 90px;
     width: 100%;
     height: auto;
-    box-shadow: 0px 0px 18px 22px rgba(255, 255, 255, 0.0);
+    box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.0);
   }
   &.active {
     img {
-      box-shadow: 0px 0px 18px 22px rgba(255, 255, 255, 0.75);
+      box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.75);
     }
   }
 }
@@ -101,4 +110,33 @@ a.icon {
     .keep-height {
         min-height: 100px;
     }
+}
+
+
+#intro input[type="checkbox"] {
+	display: none;
+}
+
+button.btn-light {
+  font-weight: bold;
+  font-style: italic;
+  // font-size: 1.5rem;
+  vertical-align: middle;
+
+  -webkit-transition: background .2s ease-in-out, color .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, color .2s ease-in-out;
+  transition: background .2s ease-in-out, color .2s ease-in-out;
+}
+
+a.link-underline {
+  text-decoration: none;
+  border-bottom: 1px solid $link-color;
+  -webkit-transition: border .2s ease-in-out, color .2s ease-in-out;
+  -moz-transition: border .2s ease-in-out, color .2s ease-in-out;
+  transition: border .2s ease-in-out, color .2s ease-in-out;
+  padding-bottom: 2px;
+  &:hover {
+    border-bottom: 1px solid rgba($link-color, 0.2);
+    color: rgba($link-color, 0.5);
+  }
 }

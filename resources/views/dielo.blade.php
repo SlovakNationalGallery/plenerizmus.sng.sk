@@ -33,7 +33,7 @@
     </div>
 
     <div class="top-right">
-      <a href="#" class="mr-4" data-toggle="modal" data-target="#infoModal"><em>info</em></a>
+      <a href="#" class="mr-4" data-toggle="modal" data-target="#infoModal"><em>Info</em></a>
     </div>
 
     <div class="bottom-panel bg-overlay">
@@ -83,7 +83,7 @@
               @if (session('kiosk', false))
                 webumenia.sk
               @else
-                <a href="https://www.webumenia.sk/kolekcia/173" target="_blank">webumenia.sk</a>
+                <a href="https://www.webumenia.sk/kolekcia/173" class="link-underline" target="_blank">webumenia.sk</a>
               @endif
             </p>
           </div>

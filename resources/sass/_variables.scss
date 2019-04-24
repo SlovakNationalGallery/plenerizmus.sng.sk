@@ -1,7 +1,12 @@
 
 // Body
 $body-bg: #EAE1D0;
+$body-color: #393939;
+
 $modal-content-bg: $body-bg;
+
+$primary: $body-color;
+$light:   #D4CCBD;
 
 // Typography
 $font-family-sans-serif: "sangbleu", sans-serif;
@@ -38,3 +43,7 @@ $container-max-widths: (
         xl: 1140px,
         xxl: 1610px
 );
+
+// $border-radius:               .25rem;
+$border-radius-lg:            .9rem;
+// $border-radius-sm:            .2rem;

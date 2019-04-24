@@ -1,21 +1,12 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-xxl-6">
-                <transition name="fade">
-                    <blockquote v-on:click="randomCitation" v-if="show">
-                        <p class="small">{{ selectedCitation.message }}</p>
+    <transition name="fade">
+        <blockquote v-on:click="randomCitation" v-if="show">
+            <p class="small">{{ selectedCitation.message }}</p>
 
-                        <footer class="small">{{ selectedCitation.author }}</footer>
+            <footer class="small">{{ selectedCitation.author }}</footer>
 
-                    </blockquote>
-                </transition>
-                <!-- <button v-on:click="randomCitation">
-                  reload
-                </button> -->
-            </div>
-        </div>
-    </div>
+        </blockquote>
+    </transition>
 </template>
 
 <script>
