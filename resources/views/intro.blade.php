@@ -6,7 +6,7 @@
 
 @section('content')
 
-  <form action="/dielo" method="GET">
+  <form action="/dielo" method="GET" class="d-inline">
   <div class="d-table h-100" id="intro"><div class="d-table-cell align-middle">
     <div class="row">
 
@@ -103,6 +103,7 @@
 
   <script>
   (function() {
+
     $(".icon").each(function () {
       if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
         $(this).addClass('active');
@@ -113,11 +114,36 @@
     });
 
     $(".icon").on("click", function (e) {
+
+      if ($(this).hasClass('disabled')) {
+        e.preventDefault();
+        return;
+      }
+
       $(this).toggleClass('active');
       var $checkbox = $(this).find('input[type="checkbox"]');
       $checkbox.prop("checked",!$checkbox.prop("checked"))
 
       e.preventDefault();
+
+      var formData = new FormData($('form')[0]);
+
+      $.ajax({
+          type: 'GET',
+          url: '{{ route('atributy') }}?' + $('form').find(":input").serialize(),
+          dataType: 'json',
+          success: function (data) {
+              $.each($('form input'), function(index, element) {
+                  if(jQuery.inArray($(element).val(), data) == -1) {
+                    $(element).parent('a').addClass('disabled');
+                  } else {
+                    $(element).parent('a').removeClass('disabled');
+                  }
+              });
+          }
+      });
+
+
     });
   })();
   </script>

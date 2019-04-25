@@ -71,6 +71,9 @@ a.icon {
 
   &:hover {
     text-decoration: none;
+  }
+
+  &:not(.disabled):hover {
     color: $body-color;
     opacity: 0.8;
     img {
@@ -87,6 +90,10 @@ a.icon {
     img {
       box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.75);
     }
+  }
+  &.disabled {
+    opacity: 0.25;
+    cursor: default;
   }
 }
 
@@ -123,9 +130,12 @@ button.btn-light {
   // font-size: 1.5rem;
   vertical-align: middle;
 
-  -webkit-transition: background .2s ease-in-out, color .2s ease-in-out;
-  -moz-transition: background .2s ease-in-out, color .2s ease-in-out;
-  transition: background .2s ease-in-out, color .2s ease-in-out;
+  // -webkit-transition: background .2s ease-in-out, color .2s ease-in-out;
+  // -moz-transition: background .2s ease-in-out, color .2s ease-in-out;
+  // transition: background .2s ease-in-out, color .2s ease-in-out;
+  &:hover {
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,.08), 0 5px 15px 0 rgba(0,0,0,.05);
+  }
 }
 
 a.link-underline {
