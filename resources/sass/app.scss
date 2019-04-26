@@ -56,6 +56,8 @@ h3 {
 a.icon {
   color: $body-color;
   opacity: 1.0;
+  font-size: 0.9rem;
+
 
   -webkit-transition: opacity .2s ease-in-out, color .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out, color .2s ease-in-out;
@@ -67,19 +69,21 @@ a.icon {
     transition: box-shadow .2s ease-in-out;
   }
 
-  font-size: 0.9rem;
-
   &:hover {
     text-decoration: none;
   }
 
-  &:not(.disabled):hover {
-    color: $body-color;
-    opacity: 0.8;
-    img {
-      box-shadow: 0px 0px 0 10px rgba(255, 255, 255, 0.4);
+
+  @media (hover: hover) {
+    &:not(.disabled):not(.active):hover {
+      color: $body-color;
+      opacity: 0.8;
+      img {
+        box-shadow: 0px 0px 0 10px rgba(255, 255, 255, 0.4);
+      }
     }
   }
+
   img, span.rounded-circle {
     max-width: 90px;
     width: 100%;
@@ -87,8 +91,9 @@ a.icon {
     box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.0);
   }
   &.active {
+    text-decoration: none;
     img {
-      box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.75);
+      box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 0.85);
     }
   }
   &.disabled {
@@ -133,7 +138,13 @@ button.btn-light {
   // -webkit-transition: background .2s ease-in-out, color .2s ease-in-out;
   // -moz-transition: background .2s ease-in-out, color .2s ease-in-out;
   // transition: background .2s ease-in-out, color .2s ease-in-out;
-  &:hover {
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 15px 30px 0 rgba(0,0,0,.08), 0 5px 15px 0 rgba(0,0,0,.05);
+    }
+  }
+
+  &.ready {
     box-shadow: 0 15px 30px 0 rgba(0,0,0,.08), 0 5px 15px 0 rgba(0,0,0,.05);
   }
 }
@@ -145,8 +156,10 @@ a.link-underline {
   -moz-transition: border .2s ease-in-out, color .2s ease-in-out;
   transition: border .2s ease-in-out, color .2s ease-in-out;
   padding-bottom: 2px;
-  &:hover {
-    border-bottom: 1px solid rgba($link-color, 0.2);
-    color: rgba($link-color, 0.5);
+  @media (hover: hover) {
+    &:hover {
+      border-bottom: 1px solid rgba($link-color, 0.2);
+      color: rgba($link-color, 0.5);
+    }
   }
 }
