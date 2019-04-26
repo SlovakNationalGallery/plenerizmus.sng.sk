@@ -155,6 +155,14 @@ Route::get('/dielo', function (Request $request) {
         $params['body']['query']['bool']['must'][]['bool']['should'] = $mood;
     }
 
+    if ($request->has('exclude')) {
+        $mood = [];
+        foreach ($request->input('exclude') as $exclude) {
+            $mood[]['term']['id'] = $exclude;
+        }
+        $params['body']['query']['bool']['must'][]['bool']['must_not'] = $mood;
+    }
+
     // dd($params);
 
     $response = $client->search($params);
@@ -164,6 +172,16 @@ Route::get('/dielo', function (Request $request) {
     }
 
     $item_id = $response['hits']['hits'][0]['_source']['id'];
+
+    $total = $response['hits']['total'];
+
+    $reload_url = null;
+    if ($total > 1) { //and $total < count(excluded)
+        $allQueries = array_merge($request->query(), ['exclude[]' => $item_id]);
+        //Generate the URL with all the queries:
+        $reload_url = $request->fullUrlWithQuery($allQueries);
+    }
+
 
     $item = \App\Item::find($item_id);
     $itemImages = $item->getZoomableImages();
@@ -192,6 +210,7 @@ Route::get('/dielo', function (Request $request) {
         'index' => $index,
         'fullIIPImgURLs' => $fullIIPImgURLs,
         'items_count' => $items_count,
+        'reload_url' => $reload_url,
     ]);
 
 

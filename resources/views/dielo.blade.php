@@ -50,7 +50,9 @@
           <a id="zoom-out" href="#zoom-out" class="btn btn-link btn-lg px-1 px-lg-2"><img src="images/icons/minus.svg" alt="minus"></a>
         </div>
         <div class="col-6 col-sm-3 col-md-2 p-2 order-sm-4 text-right">
-          <a href="{{ url()->full() }}" class="btn btn-link btn-lg mr-4"><span class="d-none d-md-inline">Ďalšie</span><img src="images/icons/reload.svg" alt="" class="pl-2"></a>
+          @if ($reload_url)
+            <a href="{{ $reload_url }}" class="btn btn-link btn-lg mr-4" rel="nofollow"><span class="d-none d-md-inline">Ďalšie</span><img src="images/icons/reload.svg" alt="" class="pl-2"></a>
+          @endif
         </div>
       </div>
 
