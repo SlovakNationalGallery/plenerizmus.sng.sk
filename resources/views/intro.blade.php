@@ -89,7 +89,7 @@
                 <citation class=""></citation>
             </div>
             <div class="col-md-3 col-xxl-3 text-right">
-                <button type="submit" class="btn btn-light btn-lg mr-4"><span class="d-none d-md-inline">Vyhľadaj</span><img src="images/icons/arrow-right.svg" alt="arrow" class="pl-2"></button>
+                <button type="submit" class="btn btn-light btn-lg mr-4" id="submit"><span class="d-none d-md-inline">Vyhľadaj</span><img src="images/icons/arrow-right.svg" alt="arrow" class="pl-2"></button>
             </div>
         </div>
     </div>
@@ -122,7 +122,16 @@
 
       $(this).toggleClass('active');
       var $checkbox = $(this).find('input[type="checkbox"]');
-      $checkbox.prop("checked",!$checkbox.prop("checked"))
+      $checkbox.prop("checked",!$checkbox.prop("checked"));
+
+      if ($("input:checkbox:checked").length > 0)
+      {
+          $('#submit').addClass('ready');
+      }
+      else
+      {
+        $('#submit').removeClass('ready');
+      }
 
       e.preventDefault();
 
