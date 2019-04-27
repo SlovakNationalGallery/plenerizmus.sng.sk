@@ -12,7 +12,7 @@
   <meta property="og:description" content="Vyber si z pestrej škály motívov, nálad a počasia a preskúmaj výslednú maľbu alebo kresbu naozaj zblízka." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ url()->current() }}" />
-  <meta property="og:image" content="{{ asset('/images/og_image.jpg') }}" />
+  <meta property="og:image" content="{{ asset('/images/og-image.jpg') }}" />
   <meta property="og:site_name" content="Z akadémie do prírody" />
   @show
 
