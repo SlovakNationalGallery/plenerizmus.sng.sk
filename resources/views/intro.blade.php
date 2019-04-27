@@ -66,7 +66,7 @@
         <div class="row">
         @foreach ($weather as $w)
             <a href="/dielo?pocasie[]={{ $w }}" class="display-block col-4 weather-icon icon mb-4 text-center">
-              <img src="/images/pocasie/{{ str_slug($w) }}.svg" alt="{{ $w }}" class="rounded-circle mb-2"><br>
+              <img src="/images/pocasie/{{ str_slug($w) }}.png" alt="{{ $w }}" class="rounded-circle mb-2"><br>
               {{ $w }}
               <input type="checkbox" name="pocasie[]" value="{{ $w }}" />
             </a>
