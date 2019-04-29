@@ -2,6 +2,8 @@
 
 @section('title', trans('intro.title'))
 
+@section('body-class', 'bg-dark')
+
 @section('content')
 
 

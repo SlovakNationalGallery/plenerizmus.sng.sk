@@ -173,8 +173,8 @@ $("document").ready(function() {
         // viewer.viewport.fitBounds(box1);
       viewer.viewport.zoomSpring.animationTime = "2.5";
       setTimeout(function () {
-
-        viewer.viewport.zoomTo(0.8);
+        var imageBounds =viewer.world.getItemAt(0).getBounds();
+        viewer.viewport.fitBounds(imageBounds);
         viewer.viewport.applyConstraints();
         viewer.viewport.zoomSpring.animationTime = "1.5";
       }, 500);

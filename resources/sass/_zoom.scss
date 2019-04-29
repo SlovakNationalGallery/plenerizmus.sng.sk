@@ -1,4 +1,4 @@
-$zoom-bg: #000;
+$zoom-bg: $dark;
 $zoom-color: #D4CCBD;
 
 .zoomviewer {
@@ -9,8 +9,7 @@ $zoom-color: #D4CCBD;
   }
 
   #viewer{
-    height: 100%;
-    min-height: 100%;
+    height: calc(100% - 75px);
     width: 100%;
     position: absolute;
     top: 0;
