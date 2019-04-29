@@ -138,21 +138,21 @@ Route::get('/dielo', function (Request $request) {
         foreach ($request->input('pocasie') as $pocasie) {
             $weather[]['term']['tag'] = $pocasie;
         }
-        $params['body']['query']['bool']['must'][]['bool']['should'] = $weather;
+        $params['body']['query']['bool']['must'][]['bool']['must'] = $weather;
     }
     if ($request->has('motiv')) {
         $subject = [];
         foreach ($request->input('motiv') as $motiv) {
             $subject[]['term']['tag'] = $motiv;
         }
-        $params['body']['query']['bool']['must'][]['bool']['should'] = $subject;
+        $params['body']['query']['bool']['must'][]['bool']['must'] = $subject;
     }
     if ($request->has('nalada')) {
         $mood = [];
         foreach ($request->input('nalada') as $nalada) {
             $mood[]['term']['tag'] = $nalada;
         }
-        $params['body']['query']['bool']['must'][]['bool']['should'] = $mood;
+        $params['body']['query']['bool']['must'][]['bool']['must'] = $mood;
     }
 
     if ($request->has('exclude')) {
