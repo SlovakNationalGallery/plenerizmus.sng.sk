@@ -168,7 +168,7 @@ Route::get('/dielo', function (Request $request) {
     $response = $client->search($params);
 
     if (empty($response['hits']['total'])) {
-        return 'nenaslo ziadne';
+        return view('nenaslo');
     }
 
     $item_id = $response['hits']['hits'][0]['_source']['id'];
