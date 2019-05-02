@@ -14,13 +14,13 @@
         <p class="text-center">
           pre zadané vlastnosti sa nanašlo žiadne dielo
         </p>
-        <a href="/" class="btn btn-light btn-lg d-inline-block mr-1">
+        <a href="/" class="btn btn-light d-inline-block mr-1">
           {{-- <img src="images/icons/arrow.svg" alt="arrow" class="pr-2" style="margin-top: -0.3rem;"> --}}
-          <span class="d-none d-md-inline">Návrat naspäť</span>
+          Návrat naspäť
         </a>
-        <a href="/dielo" class="btn btn-light btn-lg d-inline-block ml-1">
+        <a href="/dielo" class="btn btn-light d-inline-block ml-1">
           {{-- <img src="images/icons/arrow.svg" alt="arrow" class="pr-2" style="margin-top: -0.3rem;"> --}}
-          <span class="d-none d-md-inline">Hocijaké dielo</span>
+          Hocijaké dielo
         </a>
       </div>
     </div>
