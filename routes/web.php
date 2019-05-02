@@ -156,11 +156,11 @@ Route::get('/dielo', function (Request $request) {
     }
 
     if ($request->has('exclude')) {
-        $mood = [];
-        foreach ($request->input('exclude') as $exclude) {
-            $mood[]['term']['id'] = $exclude;
+        $exclude = [];
+        foreach ($request->input('exclude') as $pouzite) {
+            $exclude[]['term']['id'] = $pouzite;
         }
-        $params['body']['query']['bool']['must'][]['bool']['must_not'] = $mood;
+        $params['body']['query']['bool']['must'][]['bool']['must_not'] = $exclude;
     }
 
     // dd($params);
