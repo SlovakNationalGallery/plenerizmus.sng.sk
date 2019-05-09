@@ -89,6 +89,7 @@ Route::get('/', function (Request $request) {
         'pochmúrnosť',
         'samota',
         'tvrdosť',
+        'melanchólia',
     ];
 
 
