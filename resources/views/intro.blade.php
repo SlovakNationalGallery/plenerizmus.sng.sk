@@ -11,19 +11,20 @@
     <div class="row">
 
       <div class="col-md-6 order-md-2 header text-center my-4">
-        <h1>Nájdi svoje obľúbené dielo</h1>
-        <h2 class="py-1">navoľ si vlastnosti diela podľa svojej aktuálnej nálady</h2>
+        <h1>Objav svoje obľúbené dielo</h1>
+        <h2 class="py-1">vyber si vlastnosti diela podľa nálady
+        a preskúmaj <br>nájdenú krajinu naozaj zblízka</h2>
       </div>
 
       <div class="col-md-3 order-md-1 my-md-4 px-4">
         <p class="text-center small">
-          V druhej polovici 19. storočia objavili umelci a&nbsp;umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.
+          {{-- V druhej polovici 19. storočia objavili umelci a&nbsp;umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier. --}}
         </p>
       </div>
 
       <div class="col-md-3 order-md-3 my-md-4 px-4">
         <p class="text-center small">
-          Vyber si z pestrej škály motívov, nálad a&nbsp;počasia a&nbsp;preskúmaj výslednú maľbu alebo kresbu naozaj zblízka.
+          {{-- Vyber si z pestrej škály motívov, nálad a&nbsp;počasia a&nbsp;preskúmaj výslednú maľbu alebo kresbu naozaj zblízka. --}}
         </p>
       </div>
 
@@ -84,7 +85,12 @@
 
     <div class="mt-2 mt-md-4 mt-xxl-5 keep-height d-block">
         <div class="row">
-            <div class="col-md-3 col-xxl-3"></div>
+            <div class="col-md-3 col-xxl-3 text-left">
+              <a href="#" class="btn btn-light btn-rounded btn-lg ml-4" id="info" data-toggle="modal" data-target="#infoModal">
+                <span class="d-none d-md-inline">Info</span>
+                {{-- <img src="images/icons/info.svg" alt="info" class="pl-2" style="max-height:19px; width: auto; vertical-align: middle;" > --}}
+              </a>
+            </div>
             <div class="col-md-6 col-xxl-6">
                 <citation class=""></citation>
             </div>
@@ -97,6 +103,44 @@
 
   </div></div>
   </form>
+
+  {{-- Modal --}}
+  <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-left p-4">
+          {{-- <h3></h3> --}}
+          {{-- <em class="mt-2"></em> --}}
+          <h3 class="text-center mb-3">Plenérizmus</h3>
+
+          <p>Plenér (z fr. <em>en plein air</em> – na vzduchu, vonku): maľovanie vo voľnej prírode </p>
+
+
+          <p class="my-2">
+            Počas 19. storočia objavovali umelci a umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.<br><br>
+
+            Webstránka plenerizmus.sng.sk dopĺňa výstavu Slovenskej národnej galérie <a href="https://www.sng.sk/sk/vystavy/1942_z-akademie-do-prirody-podoby-krajinomalby-v-strednej-europe-1860-1890" target="_blank" class="font-italic">Z akadémie do prírody. Podoby krajinomaľby v strednej Európe 1860 – 1890</a>. Hravým spôsobom prezentuje viac než 140 výtvarných diel z výstavy a z katalógu vo vysokom rozlíšení.<br><br>
+
+            Vyhľadávanie malieb a kresieb podľa motívov, nálad či počasia upriamuje pozornosť na javy, ktoré si umelkyne a umelci všímali počas svojej tvorby vo voľnej prírode. Ich snaha o zachytenie prchavého dojmu, uvoľnenejší rukopis a odvážnejšia práca s farbou pomohli posunúť krajinomaľbu smerom k impresionizmu a k modernému umeniu. Fascináciu prírodou a pozorovací talent dokladajú aj autentické citáty z denníkov osobností zastúpených na výstave.</p>
+
+            <div class="small mt-3">
+            <p>Vytvoril lab.SNG v spolupráci s oddelením galerijnej pedagogiky SNG</p>
+            <ul class="list-unstyled">
+              <li>Vývoj, dizajn: Igor Rjabinin, Lukáš Štepanovský, Pavlína Morháčová</li>
+              <li>Produkcia, obsah: Gabriel Balkó, Michal Čudrnák, Nikoleta Habartová, Zuzana Koblišková, Miroslava Mišová, Peter Pivoda</li>
+              <li>Edičné zabezpečenie: Soňa Hrúziková, Luďka Kratochvílová</li>
+              <li>Kurátorka výstavy: Katarína Beňová</li>
+            </ul>
+
+            <p>Všetky diela sú dostupné aj na <a href="https://www.webumenia.sk/kolekcia/173" target="_blank" class="link-underline">Webe umenia</a></p>
+            <p>Zdrojový kód je dostupný na <a href="https://github.com/SlovakNationalGallery/plenerizmus.sng.sk" target="_blank" class="link-underline">Githube</a></p>
+            </div>
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 @stop
 
 @push('scripts')
