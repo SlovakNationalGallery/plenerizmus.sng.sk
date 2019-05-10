@@ -78,18 +78,18 @@ Route::get('/', function (Request $request) {
     ];
 
     $mood = [
-        'sviežosť',
         'idyla',
         'mäkkosť',
+		'melanchólia',
+		'sviežosť',
         'zvuk',
+		'zamyslenie',
         'malebnosť',
         'majestát',
-        'zamyslenie',
         'ticho',
         'pochmúrnosť',
         'samota',
         'tvrdosť',
-        'melanchólia',
     ];
 
 
