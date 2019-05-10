@@ -65,6 +65,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body text-center p-4">
+            <button type="button" class="close" data-dismiss="modal" aria-label="zavrieť">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <em class="mt-2">{{ implode(', ', $item->authors) }}</em>
             <h3>{{ $item->title }}</h3>
             <p class="my-2">

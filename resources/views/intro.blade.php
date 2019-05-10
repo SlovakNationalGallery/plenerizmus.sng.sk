@@ -13,19 +13,19 @@
       <div class="col-md-6 order-md-2 header text-center my-4">
         <h1>Objav svoje obľúbené dielo</h1>
         <h2 class="py-1">vyber si vlastnosti diela podľa nálady
-        a preskúmaj <br>nájdenú krajinu naozaj zblízka</h2>
+        a&nbsp;preskúmaj nájdenú krajinu naozaj zblízka</h2>
       </div>
 
       <div class="col-md-3 order-md-1 my-md-4 px-4">
-        <p class="text-center small">
-          {{-- V druhej polovici 19. storočia objavili umelci a&nbsp;umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier. --}}
-        </p>
+        {{-- <p class="text-center small">
+          V druhej polovici 19. storočia objavili umelci a&nbsp;umelkyne čaro tvorby v plenéri. Krásy prírody, mesta či vidieka zachytávali priamo na plátno alebo na papier.
+        </p> --}}
       </div>
 
       <div class="col-md-3 order-md-3 my-md-4 px-4">
-        <p class="text-center small">
-          {{-- Vyber si z pestrej škály motívov, nálad a&nbsp;počasia a&nbsp;preskúmaj výslednú maľbu alebo kresbu naozaj zblízka. --}}
-        </p>
+        {{-- <p class="text-center small">
+          Vyber si z pestrej škály motívov, nálad a&nbsp;počasia a&nbsp;preskúmaj výslednú maľbu alebo kresbu naozaj zblízka.
+        </p> --}}
       </div>
 
     </div>
@@ -85,17 +85,17 @@
 
     <div class="mt-2 mt-md-4 mt-xxl-5 keep-height d-block">
         <div class="row">
-            <div class="col-md-3 col-xxl-3 text-left">
-              <a href="#" class="btn btn-light btn-rounded btn-lg ml-4" id="info" data-toggle="modal" data-target="#infoModal">
-                <span class="d-none d-md-inline">Info</span>
+            <div class="col-6 col-md-3 col-xxl-3 text-left">
+              <a href="#" class="btn btn-light btn-rounded btn-lg ml-4 mb-4" id="info" data-toggle="modal" data-target="#infoModal">
+                Info
                 {{-- <img src="images/icons/info.svg" alt="info" class="pl-2" style="max-height:19px; width: auto; vertical-align: middle;" > --}}
               </a>
             </div>
-            <div class="col-md-6 col-xxl-6">
-                <citation class=""></citation>
+            <div class="col-6 col-md-3 col-xxl-3 text-right order-md-last">
+                <button type="submit" class="btn btn-light btn-lg mr-4 mb-4" id="submit"><span class="d-none d-md-inline">Vyhľadaj</span><img src="images/icons/arrow-right.svg" alt="arrow" class="pl-2"></button>
             </div>
-            <div class="col-md-3 col-xxl-3 text-right">
-                <button type="submit" class="btn btn-light btn-lg mr-4" id="submit"><span class="d-none d-md-inline">Vyhľadaj</span><img src="images/icons/arrow-right.svg" alt="arrow" class="pl-2"></button>
+            <div class="col-12 col-md-6 col-xxl-6">
+                <citation class=""></citation>
             </div>
         </div>
     </div>
@@ -109,6 +109,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body text-left p-4">
+          <button type="button" class="close" data-dismiss="modal" aria-label="zavrieť">
+            <span aria-hidden="true">&times;</span>
+          </button>
           {{-- <h3></h3> --}}
           {{-- <em class="mt-2"></em> --}}
           <h3 class="text-center mb-3">Plenérizmus</h3>
