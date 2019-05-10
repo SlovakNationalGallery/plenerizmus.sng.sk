@@ -50,6 +50,29 @@
   {{-- <script type="text/javascript" src="{{ mix('/js/manifest.js') }}"></script> --}}
   {{-- <script type="text/javascript" src="{{ mix('/js/vendor.js') }}"></script> --}}
   <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
+
+  @if (session('kiosk', false))
+    {{-- return user back to intro screen if idle  > 60 seconds --}}
+    <script>
+    (function() {
+
+        /* disable external links */
+        $('a').filter(function() {
+           return this.hostname && this.hostname !== location.hostname;
+        }).addClass("external");
+
+        $('a').click(function(e) {
+            if($(this).hasClass('external')) {
+                e.preventDefault();
+            }
+        });
+
+    })();
+
+
+    </script>
+  @endif
+
   @stack('scripts')
 
 </body>

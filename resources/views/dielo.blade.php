@@ -130,17 +130,6 @@
           document.addEventListener(evt, resetIdleTimeout, false)
       );
 
-      /* disable external links */
-      $('a').filter(function() {
-         return this.hostname && this.hostname !== location.hostname;
-      }).addClass("external");
-
-      $('a').click(function(e) {
-          if($(this).hasClass('external')) {
-              e.preventDefault();
-          }
-      });
-
   })();
 
 
