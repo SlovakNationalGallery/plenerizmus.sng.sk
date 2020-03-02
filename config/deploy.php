@@ -113,9 +113,9 @@ return [
     */
 
     'hosts' => [
-        '37.9.170.240' => [
+        '195.210.28.242' => [
             'deploy_path' => '/var/www/plenerizmus.sng.sk',
-            'user' => 'webumenia',
+            'user' => 'igor',
         ],
     ],
 
