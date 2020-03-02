@@ -20,34 +20,22 @@ Route::get('/', function (Request $request) {
         $request->session()->put('kiosk', true);
     }
 
-    if ($request->has('pocasie')) {
-        dd($request->input('pocasie'));
-        if ($request->session()->has('pocasie')) {
-            //
-        }
-    }
-
     $limit = 10;
     $filter_tag = 'plenérizmus';
-    $client = ClientBuilder::create()->build();
+    $client = ClientBuilder::create()->setHosts(config('elasticsearch.hosts'))->build();
     $params = [
         'index' => config('elasticsearch.index'),
-        'type' => 'items',
         'body' => [
-            'query' => [
-            ]
+            'query' => []
         ]
-        // 'id' => 'SVK:SNG.O_4939',
-        // 'id' => 'my_id',
-        // 'body' => ['testField' => 'abc']
     ];
+
     $params['body']['size'] = $limit;
-    $params['body']['query']['bool']['filter']['and'][]['term']['has_iip'] = true;
-    $params['body']['query']['bool']['filter']['and'][]['term']['tag'] = $filter_tag;
+    $params['body']['query']['bool']['must'][]['term']['has_iip'] = true;
+    $params['body']['query']['bool']['must'][]['term']['tag'] = $filter_tag;
 
 
     $response = $client->search($params);
-    // dd($response);
 
     $weather = [
         'jasno',
@@ -108,52 +96,37 @@ Route::get('/dielo', function (Request $request) {
 
     $limit = 1;
     $filter_tag = 'plenérizmus';
-    $client = ClientBuilder::create()->build();
+    $client = ClientBuilder::create()->setHosts(config('elasticsearch.hosts'))->build();
     $params = [
         'index' => config('elasticsearch.index'),
-        'type' => 'items',
-        'body' => [
-            'query' => [
-            ]
-        ]
-        // 'id' => 'SVK:SNG.O_4939',
-        // 'id' => 'my_id',
-        // 'body' => ['testField' => 'abc']
+        'body' => []
     ];
     $params['body']['size'] = $limit;
-    $params['body']['sort'][] = [
-        '_script' => [
-            'script' => 'Math.random() * 200000',
-            'type' => 'number',
-            'params' => [],
-            'order' => 'asc',
-        ]
-    ];
 
-
-    $params['body']['query']['bool']['must'][]['term']['has_iip'] = true;
-    $params['body']['query']['bool']['must'][]['term']['tag'] = $filter_tag;
+    $query = [];
+    $query['bool']['must'][]['term']['has_iip'] = true;
+    $query['bool']['must'][]['term']['tag'] = $filter_tag;
 
     if ($request->has('pocasie')) {
         $weather = [];
         foreach ($request->input('pocasie') as $pocasie) {
             $weather[]['term']['tag'] = $pocasie;
         }
-        $params['body']['query']['bool']['must'][]['bool']['must'] = $weather;
+        $query['bool']['must'][]['bool']['must'] = $weather;
     }
     if ($request->has('motiv')) {
         $subject = [];
         foreach ($request->input('motiv') as $motiv) {
             $subject[]['term']['tag'] = $motiv;
         }
-        $params['body']['query']['bool']['must'][]['bool']['must'] = $subject;
+        $query['bool']['must'][]['bool']['must'] = $subject;
     }
     if ($request->has('nalada')) {
         $mood = [];
         foreach ($request->input('nalada') as $nalada) {
             $mood[]['term']['tag'] = $nalada;
         }
-        $params['body']['query']['bool']['must'][]['bool']['must'] = $mood;
+        $query['bool']['must'][]['bool']['must'] = $mood;
     }
 
     if ($request->has('exclude')) {
@@ -161,20 +134,28 @@ Route::get('/dielo', function (Request $request) {
         foreach ($request->input('exclude') as $pouzite) {
             $exclude[]['term']['id'] = $pouzite;
         }
-        $params['body']['query']['bool']['must'][]['bool']['must_not'] = $exclude;
+        $query['bool']['must'][]['bool']['must_not'] = $exclude;
     }
 
-    // dd($params);
+    $params['body'] = [
+                        'query' => [
+                            'function_score' => [
+                                'query' => $query,
+                                'random_score' => new \stdClass,
+                                'boost_mode' => 'replace',
+                            ]
+                        ]
+                    ];
 
     $response = $client->search($params);
 
-    if (empty($response['hits']['total'])) {
+    if (empty($response['hits']['total']['value'])) {
         return view('nenaslo');
     }
 
     $item_id = $response['hits']['hits'][0]['_source']['id'];
 
-    $total = $response['hits']['total'];
+    $total = $response['hits']['total']['value'];
 
     $reload_url = null;
     if ($total > 1) { //and $total < count(excluded)
@@ -200,11 +181,10 @@ Route::get('/dielo', function (Request $request) {
 
     $params = [
         'index' => config('elasticsearch.index'),
-        'type' => 'items'
     ];
     $response = $client->search($params);
 
-    $items_count = (!empty($response['hits']['total'])) ? $response['hits']['total'] : 0;
+    $items_count = (!empty($response['hits']['total']['value'])) ? $response['hits']['total']['value'] : 0;
 
     return view('dielo', [
         'item' => $item,
@@ -219,10 +199,9 @@ Route::get('/dielo', function (Request $request) {
 
 Route::get('/{id}', function ($id) {
 
-    $client = ClientBuilder::create()->build();
+    $client = ClientBuilder::create()->setHosts(config('elasticsearch.hosts'))->build();
     $params = [
         'index' => config('elasticsearch.index'),
-        'type' => 'items',
         'id' => $id,
     ];
 

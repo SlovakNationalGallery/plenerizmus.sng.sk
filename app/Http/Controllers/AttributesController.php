@@ -11,10 +11,10 @@ class AttributesController extends Controller
 
     public function get(Request $request)
     {
-        $client = ClientBuilder::create()->build();
+        $client = ClientBuilder::create()->setHosts(config('elasticsearch.hosts'))->build();
+
         $params = [
             'index' => config('elasticsearch.index'),
-            'type' => 'items',
             'body' => [
                 'query' => [
                 ]
