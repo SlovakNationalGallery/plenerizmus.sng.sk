@@ -165,9 +165,7 @@ class Item extends Model
 
     public function getZoomableImages()
     {
-        return $this->images->filter(function (ItemImage $image) {
-            return $image->isZoomable();
-        });
+        return $this->images;
     }
 
     public function hasZoomableImages() {
@@ -181,7 +179,7 @@ class Item extends Model
 
     public function images()
     {
-        return $this->hasMany(ItemImage::class)->orderBy('order');
+        return $this->hasMany(ItemImage::class)->orderBy('iipimg_url');
     }
 
     public function getTitleWithAuthors($html = false)

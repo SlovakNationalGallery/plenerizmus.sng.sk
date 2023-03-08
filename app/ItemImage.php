@@ -11,36 +11,42 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 class ItemImage extends Model
 {
-    const IIP_FULL_URL_PREFIX = '/fcgi-bin/iipsrv.fcgi?DeepZoom=';
-    const IIP_FULL_URL_SUFFIX = '.dzi';
-
-    protected $connection = 'mysql_webumenia';
-
     protected $fillable = [
-        'title',
         'iipimg_url',
         'item_id',
-        'order',
     ];
 
-    public function getIipimgUrl() {
-        return $this->iipimg_url;
-    }
-
-    public function item() {
+    public function item()
+    {
         return $this->belongsTo(Item::class);
     }
 
-    public function getFullIIPImgURL()
+    public function getDeepZoomUrl()
     {
-        return self::IIP_FULL_URL_PREFIX.$this->iipimg_url.self::IIP_FULL_URL_SUFFIX;
+        return sprintf(
+            '%s/zoom/?path=%s.dzi',
+            config('app.iip_public'),
+            urlencode($this->iipimg_url)
+        );
     }
 
-    public function isZoomable() {
-        return $this->iipimg_url !== null;
+    public function getPreviewUrl($maxSize = 800)
+    {
+        return sprintf(
+            '%s/preview/?path=%s&size=%d',
+            config('app.iip_public'),
+            urlencode($this->iipimg_url),
+            $maxSize
+        );
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata) {
-        // $metadata->addGetterMethodConstraint('iipimg_url', 'getIipimgUrl', new NotBlank());
+    public function getIipimgUrl()
+    {
+        return $this->iipimg_url;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addGetterMethodConstraint('iipimg_url', 'getIipimgUrl', new NotBlank());
     }
 }

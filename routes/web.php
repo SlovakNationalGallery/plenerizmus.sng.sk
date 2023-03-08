@@ -168,7 +168,7 @@ Route::get('/dielo', function (Request $request) {
     $item = \App\Item::find($item_id);
     $itemImages = $item->getZoomableImages();
     $fullIIPImgURLs = $itemImages->map(function ($itemImage) {
-        return $itemImage->getFullIIPImgURL();
+        return $itemImage->getDeepZoomUrl();
     });
     $index = 0;
 

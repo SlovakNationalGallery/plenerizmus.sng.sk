@@ -229,5 +229,6 @@ return [
     ],
 
     'ga_code' => env('GA_CODE'),
+    'iip_public' => env('IIP_PUBLIC', 'https://img.webumenia.sk'),
 
 ];
